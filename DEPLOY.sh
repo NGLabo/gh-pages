@@ -15,3 +15,4 @@ mv dist docs
 cp CNAME docs
 cp LICENSE docs
 cp README.md docs
+cp public/robots.txt docs

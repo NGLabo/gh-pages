@@ -13,72 +13,91 @@ module Styles = {
   let icon = style([marginTop(px(32))]);
 };
 
+let rs = React.string;
+
+module Emoji = {
+  [@react.component]
+  let make = (~ariaLabel, ~codePoint) => {
+    <span ariaLabel role="img">
+      {codePoint->Js.String.fromCodePoint->rs}
+    </span>;
+  };
+};
+
+type t =
+  | Component(ReasonReact.reactElement)
+  | String(string);
+
+module Item = {
+  [@react.component]
+  let make = (~prefix, ~sufix) => {
+    <p className=Styles.paragraph>
+      prefix->rs
+      <span>
+        {switch (sufix) {
+         | Component(sufix) => sufix
+         | String(sufix) => sufix->rs
+         }}
+      </span>
+    </p>;
+  };
+};
+
+module Email = {
+  [@react.component]
+  let make = (~href) => {
+    <a
+      className=Styles.link
+      href={"mailto:" ++ href ++ "?Subject=Whats%20up!"}
+      target="_top">
+      href->rs
+    </a>;
+  };
+};
+
+module Link = {
+  [@react.component]
+  let make = (~href, ~children) => {
+    <a className=Styles.link href rel="noopener noreferrer" target="_blank">
+      children
+    </a>;
+  };
+};
+
 [@react.component]
 let make = (~profile: Data.profile) => {
   let age =
     ReasonDateFns.DateFns.differenceInYears(
       Js.Date.fromString(profile.birth),
       Js.Date.make(),
-    );
+    )
+    ->Js.Float.toString;
 
   <section className=Styles.section>
-    <Title bg={Css.rgb(193, 69, 102)}> {React.string(profile.name)} </Title>
+    <Title bg={Css.rgb(193, 69, 102)}> profile.name->rs </Title>
     <Caption>
-      {React.string(profile.role ++ " ")}
-      <span ariaLabel="Hot Beverage Emoji" role="img">
-        {React.string({js|☕|js})}
-      </span>
-      <span ariaLabel="Hammer and Wrench Emoji" role="img">
-        {React.string({js|🛠|js})}
-      </span>
+      {(profile.role ++ " ")->rs}
+      <Emoji ariaLabel="Hot Beverage Emoji" codePoint=9749 />
+      <Emoji ariaLabel="Hammer and Wrench Emoji" codePoint=128736 />
     </Caption>
     <div className=Styles.details>
-      <p className=Styles.paragraph>
-        {React.string("Age: " ++ Js.Float.toString(age) ++ " ")}
-        <span ariaLabel="Sparkles Emoji" role="img">
-          {React.string({js|✨|js})}
-        </span>
-      </p>
-      <p className=Styles.paragraph>
-        {React.string("Email: ")}
-        <a
-          className=Styles.link
-          href={"mailto:" ++ profile.email ++ "?Subject=Whats%20up!"}
-          target="_top">
-          {React.string(profile.email)}
-        </a>
-      </p>
-      <p className=Styles.paragraph>
-        {React.string("Location: ")}
-        <span> {React.string(profile.location)} </span>
-      </p>
-      <p className=Styles.paragraph>
-        {React.string("Personality: ")}
-        <span> {React.string(profile.personality)} </span>
-      </p>
+      <Item
+        prefix={"Age: " ++ age ++ " "}
+        sufix={
+          Component(<Emoji ariaLabel="Sparkles Emoji" codePoint=10024 />)
+        }
+      />
+      <Item
+        prefix="Email: "
+        sufix={Component(<Email href={profile.email} />)}
+      />
+      <Item prefix="Location: " sufix={profile.location->String} />
+      <Item prefix="Personality: " sufix={profile.personality->String} />
     </div>
     <div className=Styles.icon>
-      <a
-        className=Styles.link
-        href={profile.social.discord}
-        rel="noopener noreferrer"
-        target="_blank">
-        <Discord />
-      </a>
-      <a
-        className=Styles.link
-        href={profile.social.github}
-        rel="noopener noreferrer"
-        target="_blank">
-        <GitHub />
-      </a>
-      <a
-        className=Styles.link
-        href={profile.social.linkedin}
-        rel="noopener noreferrer"
-        target="_blank">
-        <Linkedin />
-      </a>
+      <Link href={profile.social.discord}> <Discord /> </Link>
+      <Link href={profile.social.github}> <GitHub /> </Link>
+      <Link href={profile.social.linkedin}> <Linkedin /> </Link>
     </div>
   </section>;
 };

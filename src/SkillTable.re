@@ -23,7 +23,7 @@ module Styles = {
     style([
       fontSize(rem(1.4)),
       fontWeight(bold),
-      unsafe("line-height", "1.25"),
+      unsafe("lineHeight", "1.25"),
       letterSpacing(px(1)),
       marginBottom(px(4)),
       marginLeft(px(0)),
@@ -45,41 +45,43 @@ module Styles = {
   let tfixed = merge([tdata, style([width(px(212))])]);
 };
 
+let rs = React.string;
+
+module Item = {
+  [@react.component]
+  let make = (~attr: Data.attr) => {
+    <tr>
+      <td className=Styles.tfixed> attr.name->rs </td>
+      <td className=Styles.tdata>
+        {List.mapi(
+           (key, tag) => <Tag key={key->string_of_int} tag />,
+           attr.tags,
+         )
+         ->Array.of_list
+         ->ReasonReact.array}
+      </td>
+    </tr>;
+  };
+};
+
 [@react.component]
 let make = (~skill: Data.skill) => {
   <div className=Styles.container>
-    <header>
-      <h3 className=Styles.tcaption> {React.string(skill.name)} </h3>
-    </header>
+    <header> <h3 className=Styles.tcaption> skill.name->rs </h3> </header>
     <table className=Styles.t>
       <thead>
         <tr>
-          <th className=Styles.theader> {React.string("Name")} </th>
-          <th className=Styles.theader> {React.string("Tags")} </th>
+          <th className=Styles.theader> "Name"->rs </th>
+          <th className=Styles.theader> "Tags"->rs </th>
         </tr>
       </thead>
       <tbody>
-        {ReasonReact.array(
-           Array.of_list(
-             List.map(
-               (attr: Data.attr) => {
-                 <tr>
-                   <td className=Styles.tfixed>
-                     {React.string(attr.name)}
-                   </td>
-                   <td className=Styles.tdata>
-                     {ReasonReact.array(
-                        Array.of_list(
-                          List.map(tag => <Tag tag />, attr.tags),
-                        ),
-                      )}
-                   </td>
-                 </tr>
-               },
-               skill.attribs,
-             ),
-           ),
-         )}
+        {List.mapi(
+           (key, attr) => {<Item key={key->string_of_int} attr />},
+           skill.attribs,
+         )
+         ->Array.of_list
+         ->ReasonReact.array}
       </tbody>
     </table>
   </div>;

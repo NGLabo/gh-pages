@@ -35,19 +35,22 @@ module Styles = {
   let dark = style([backgroundColor(rgb(48, 48, 48)), height(px(64))]);
 };
 
+let rs = React.string;
+
 [@react.component]
 let make = (~skills) => {
   <>
     <div className=Styles.root>
       <div className=Styles.container>
-        <Title bg={Css.rgb(255, 212, 94)}>
-          {React.string("My SkillSet")}
-        </Title>
+        <Title bg={Css.rgb(255, 212, 94)}> "My SkillSet"->rs </Title>
       </div>
       <div className=Styles.tcontainer>
-        {ReasonReact.array(
-           Array.of_list(List.map(skill => <SkillTable skill />, skills)),
-         )}
+        {List.mapi(
+           (key, skill) => <SkillTable key={key->string_of_int} skill />,
+           skills,
+         )
+         ->Array.of_list
+         ->ReasonReact.array}
       </div>
     </div>
     <div className=Styles.dark />

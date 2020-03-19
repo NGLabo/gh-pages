@@ -1,7 +1,7 @@
 [@bs.module "normalize.css"] external normalize: string = "normalize";
 normalize;
 
-[@bs.module "typeface-exo-2"] external typeface: string = "default";
+[@bs.module "typeface-exo-2"] external typeface: string = "typeface";
 typeface;
 
 Css.(

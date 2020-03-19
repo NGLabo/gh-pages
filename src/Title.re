@@ -5,7 +5,7 @@ module Styles = {
     style([
       fontSize(rem(3.0)),
       fontWeight(bold),
-      unsafe("line-height", "1.25"),
+      unsafe("lineHeight", "1.25"),
       letterSpacing(px(1)),
       margin(px(0)),
       position(relative),
@@ -20,7 +20,7 @@ module Styles = {
       top(px(-24)),
       left(px(-10)),
       maxWidth(vw(90.0)),
-      unsafe("line-height", "1.6"),
+      unsafe("lineHeight", "1.6"),
     ]);
 };
 
@@ -28,6 +28,6 @@ module Styles = {
 let make = (~bg, ~children) => {
   <header>
     <h1 className=Styles.title> children </h1>
-    <div className={Styles.highlight(bg)} />
+    <div className={bg->Styles.highlight} />
   </header>;
 };
