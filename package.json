@@ -1,0 +1,41 @@
+{
+  "name": "gh-pages",
+  "version": "1.0.0",
+  "description": "My GitHub Pages",
+  "scripts": {
+    "deploy": "./DEPLOY.sh",
+    "pa:build": "parcel build public/index.html",
+    "pa:watch": "parcel public/index.html",
+    "re:build": "bsb -make-world -clean-world",
+    "re:watch": "bsb -make-world -clean-world -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weslenng/gh-pages.git"
+  },
+  "author": "weslenng",
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://www.mit.edu/~amini/LICENSE.md"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/weslenng/gh-pages/issues"
+  },
+  "homepage": "https://github.com/weslenng/gh-pages#readme",
+  "dependencies": {
+    "bs-css-emotion": "^1.0.1",
+    "date-fns": "^2.11.0",
+    "norma": "^2.0.2",
+    "normalize.css": "^8.0.1",
+    "reason-date-fns": "^0.10.4",
+    "reason-react": "^0.7.0",
+    "typeface-exo-2": "^1.1.4"
+  },
+  "devDependencies": {
+    "bs-platform": "^7.2.2",
+    "parcel-bundler": "^1.12.4"
+  }
+}
