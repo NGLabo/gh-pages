@@ -5,7 +5,7 @@ module Styles = {
     style([
       fontSize(rem(3.0)),
       fontWeight(bold),
-      unsafe("lineHeight", "1.25"),
+      lineHeight(`abs(1.25)),
       letterSpacing(px(1)),
       margin(px(0)),
       position(relative),
@@ -20,7 +20,7 @@ module Styles = {
       top(px(-24)),
       left(px(-10)),
       maxWidth(vw(90.0)),
-      unsafe("lineHeight", "1.6"),
+      lineHeight(`abs(1.6)),
     ]);
 };
 

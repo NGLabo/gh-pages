@@ -23,7 +23,7 @@ module Styles = {
     style([
       fontSize(rem(1.4)),
       fontWeight(bold),
-      unsafe("lineHeight", "1.25"),
+      lineHeight(`abs(1.25)),
       letterSpacing(px(1)),
       marginBottom(px(4)),
       marginLeft(px(0)),

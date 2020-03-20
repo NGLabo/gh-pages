@@ -5,7 +5,7 @@ module Styles = {
     style([
       fontSize(rem(1.4)),
       fontWeight(medium),
-      unsafe("lineHeight", "1.25"),
+      lineHeight(`abs(1.25)),
       letterSpacing(px(1)),
       margin(px(0)),
     ]);
