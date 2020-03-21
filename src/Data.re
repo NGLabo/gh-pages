@@ -93,7 +93,7 @@ let raw = {
         {name: "Docker, Kubernetes", tags: [Beginner, Interested]},
         {name: "Linux", tags: [Advanced, WorkExperience]},
         {name: "Git", tags: [Beginner, WorkExperience]},
-        {name: "Tests (TDD, Integration)", tags: [Beginner, Interested]},
+        {name: "Tests", tags: [Intermediary, Interested]},
         {name: "Security", tags: [Intermediary, Toybox]},
         {name: "Scrum, Agile", tags: [Beginner, WorkExperience]},
       ],
