@@ -101,8 +101,8 @@ let raw = {
   ],
 };
 
-let string_of_tag = tag =>
-  switch (tag) {
+let string_of_tag =
+  fun
   | Advanced => "advanced"
   | Beginner => "beginner"
   | Interested => "interested"
@@ -110,11 +110,10 @@ let string_of_tag = tag =>
   | NotInterested => "not-interested"
   | Rusty => "rusty"
   | Toybox => "toybox"
-  | WorkExperience => "work-experience"
-  };
+  | WorkExperience => "work-experience";
 
-let color_of_tag = tag =>
-  switch (tag) {
+let color_of_tag =
+  fun
   | Advanced => Css.rgb(255, 129, 142)
   | Beginner => Css.rgb(249, 255, 163)
   | Interested => Css.rgb(145, 215, 255)
@@ -122,5 +121,4 @@ let color_of_tag = tag =>
   | NotInterested => Css.rgb(222, 222, 222)
   | Rusty => Css.rgb(222, 222, 222)
   | Toybox => Css.rgb(245, 159, 255)
-  | WorkExperience => Css.rgb(188, 255, 193)
-  };
+  | WorkExperience => Css.rgb(188, 255, 193);
