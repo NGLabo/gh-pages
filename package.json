@@ -6,7 +6,7 @@
     "pa:watch": "parcel public/index.html",
     "pa:build": "parcel build public/index.html",
     "watch": "yarn re:watch & yarn pa:watch",
-    "build": "yarn re:build && yarn pa:build && yarn shx cp public/robots.txt dist"
+    "build": "shx rm -rf dist && yarn re:build && yarn pa:build && shx cp public/robots.txt dist"
   },
   "dependencies": {
     "bs-css-emotion": "^1.1.0",
