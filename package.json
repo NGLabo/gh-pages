@@ -1,16 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "re:watch": "bsb -make-world",
-    "re:build": "bsb -make-world -clean-world",
-    "pa:watch": "parcel public/index.html",
-    "pa:build": "parcel build public/index.html",
-    "watch": "yarn re:watch & yarn pa:watch",
-    "build": "shx rm -rf dist && yarn re:build && yarn pa:build && shx cp public/robots.txt dist"
+    "watch": "concurrently \"bsb -make-world -clean-world -w\" \"wait-on src/Index.bs.js && parcel public/index.html\"",
+    "build": "shx rm -rf dist && bsb -make-world -clean-world && parcel build public/index.html && shx cp public/robots.txt dist"
   },
   "dependencies": {
     "bs-css-emotion": "^1.1.0",
-    "date-fns": "^2.11.0",
+    "date-fns": "^2.12.0",
     "normalize.css": "^8.0.1",
     "reason-date-fns": "^0.10.4",
     "reason-react": "^0.7.0",
@@ -18,7 +14,9 @@
   },
   "devDependencies": {
     "bs-platform": "^7.2.2",
+    "concurrently": "^5.1.0",
     "parcel-bundler": "^1.12.4",
-    "shx": "^0.3.2"
+    "shx": "^0.3.2",
+    "wait-on": "^4.0.2"
   }
 }
