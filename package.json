@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "watch": "concurrently \"bsb -make-world -clean-world -w\" \"wait-on src/Index.bs.js && parcel public/index.html\"",
-    "build": "shx rm -rf dist && bsb -make-world -clean-world && parcel build public/index.html && shx cp public/robots.txt dist"
+    "bsb-watch": "bsb -make-world -w",
+    "build": "shx rm -rf dist && bsb -make-world -clean-world && parcel build public/index.html && shx cp public/robots.txt dist",
+    "parcel-watch": "parcel public/index.html"
   },
   "dependencies": {
     "bs-css-emotion": "^1.1.0",
@@ -14,9 +15,7 @@
   },
   "devDependencies": {
     "bs-platform": "^7.2.2",
-    "concurrently": "^5.1.0",
     "parcel-bundler": "^1.12.4",
-    "shx": "^0.3.2",
-    "wait-on": "^4.0.2"
+    "shx": "^0.3.2"
   }
 }
