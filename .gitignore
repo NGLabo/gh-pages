@@ -1,0 +1,9 @@
+/.bsb.lock
+/.cache
+/.merlin
+/.parcel-cache
+/.vscode
+/build
+/lib/bs
+/node_modules
+/src/**/*.js
