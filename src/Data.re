@@ -48,7 +48,7 @@ let raw = {
     email: "weslenng@outlook.com",
     birth: "2000-12-31",
     location: {js|São Paulo, Brazil|js},
-    personality: {js|INTP-T • ♑|js},
+    personality: {js|INTJ-T • ♑|js},
     social: {
       discord: "https://discordapp.com/users/239549277611753473",
       github: "https://github.com/weslenng",
