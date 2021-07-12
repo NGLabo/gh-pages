@@ -43,12 +43,12 @@ type raw = {
 let raw = {
   profile: {
     avatar: "https://avatars.githubusercontent.com/u/30958533",
-    name: "Weslen Guerreiro",
-    role: "Software Engineer",
+    name: "wesλenng.fs",
+    role: "Software Developer",
     email: "weslenng@outlook.com",
     birth: "2000-12-31",
     location: {js|São Paulo, Brazil|js},
-    personality: {js|INTJ-T • ♑|js},
+    personality: {js|INTJ • ♑|js},
     social: {
       discord: "https://discordapp.com/users/239549277611753473",
       github: "https://github.com/weslenng",
